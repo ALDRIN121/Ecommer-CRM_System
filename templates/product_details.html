@@ -1,0 +1,212 @@
+{%load static%}
+<!doctype html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ecommer Shop</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+</head>
+    
+
+<body>
+    
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="menu-wrapper">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="home"><h1>Ecommer</h1></a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>                                                
+                                <ul id="navigation">  
+                                    <li><a href="home">Home</a></li>
+                                    <li><a href="mobile">Mobile</a></li>
+                                    <li><a href="laptop">Laptop</a></li>
+                                    <li><a href="tv">TV</a>
+                                    </li>
+                                    <li><a href="speaker">Speaker</a>
+                                    </li>
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            <ul>
+                               
+                                
+                                <li><a href="/cart"><span class="flaticon-shopping-cart"></span></a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!-- Hero Area Start-->
+        <!-- Hero Area End-->
+        <!--================Single Product Area =================-->
+        {%for v in val%}
+        <div class="product_image_area">
+            <div class="container">
+                <div class="row s_product_inner">
+                    <div class="col-lg-6">
+                        
+                            <div class="single-prd-item">
+                                <img class="img-fluid" src="{{v.img.url}}" alt="" style="height: 400px; width: 600px;">
+                            </div>
+                       
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="s_product_text">
+                            <h3>{{v.brand_pd}}</h3>
+                            <h2>₹{{v.price}}</h2>
+                            
+                            <p>{{v.pd_details}}</p>
+                            
+                            
+                            <div class="add_to_cart">
+                                <form action="transact" method="POST">
+
+                                    {% csrf_token %}
+
+
+                                    <div class="card_area">
+                                        <div class="product_count_area">
+                                            <p>Quantity</p>
+                                            <div class="product_count d-inline-block">
+                                                <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
+                                                <input class="product_count_item input-number"  name="qnt" value="1">
+                                                <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+
+                                    <!-- <a href="#" class="btn_3">Buy</a> -->
+                                    <br>
+                                    <button class="btn_3" type="submit" name="btn1" value="{{v.brand_pd}}">Buy</button>
+                                <!-- </form> -->
+
+                                    <!-- <form action="addcart" method="POST">
+                                        {% csrf_token %} -->
+                                        
+                                        <button class="btn_3" type="submit" name="btn2" value="{{v.brand_pd}}">Add To Cart</button>
+
+                                    </form>
+
+                            </div>
+                            </div>
+                            {%endfor%}
+                            <h1>Reviews by users</h1>
+                            <br>
+                            <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    
+                                    <th scope="col">User</th>
+                                    <th scope="col">REVIEW</th>
+                                    
+                                  </tr>
+                                </thead>
+                                {%for x in review%}
+                                <tbody>
+                                  <tr>
+                                    <td>{{x.username}}</td>
+                                    <td>{{x.review}}</td>
+                                    
+                                  </tr>
+                                  
+                                </tbody>
+                                {%endfor%}
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--================End Single Product Area =================-->
+        <!-- subscribe part here -->
+        
+        <!-- subscribe part end -->
+    </main>
+   
+    <!--? Search model Begin -->
+   
+    <!-- Search model end -->
+
+    <!-- JS here -->
+
+    <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js'%}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static './assets/js/popper.min.js' %}"></script>
+    <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static './assets/js/slick.min.js' %}"></script>
+
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static './assets/js/wow.min.js' %}"></script>
+    <script src="{% static './assets/js/animated.headline.js' %}"></script>
+    <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+    
+    <!-- contact js -->
+    <script src="{% static './assets/js/contact.js' %}"></script>
+    <script src="{% static './assets/js/jquery.form.js' %}"></script>
+    <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static './assets/js/mail-script.js' %}"></script>
+    <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static './assets/js/plugins.js' %}"></script>
+    <script src="{% static './assets/js/main.js' %}"></script>
+
+        <!-- swiper js -->
+        <script src="{% static './assets/js/swiper.min.js' %}"></script>
+            <!-- swiper js -->
+        <script src="{% static './assets/js/mixitup.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static './assets/js/waypoints.min.js' %}"></script>
+
+</body>
+
+</html>

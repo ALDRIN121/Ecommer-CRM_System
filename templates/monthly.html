@@ -1,0 +1,358 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Title -->
+    <title>Admin Panel</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+
+    <!-- DEMO CHARTS --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+
+    <!-- Template -->
+    <link rel="stylesheet" href="{% static 'css/graindashboard.css'%}">
+
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          padding-left: 100px;
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        </style>
+
+</head>
+
+<body class="has-sidebar has-fixed-sidebar-and-header">
+<!-- Header -->
+<header class="header bg-body">
+    <nav class="navbar flex-nowrap p-0">
+        <div class="navbar-brand-wrapper d-flex align-items-center col-auto">
+            <!-- Logo For Mobile View -->
+            <a class="navbar-brand navbar-brand-mobile" href="/">
+                <images class="images-fluid w-100" src="{% static 'images/logo-mini.png'%}" alt="Graindashboard">
+            </a>
+            <!-- End Logo For Mobile View -->
+
+            <!-- Logo For Desktop View -->
+            <a class="navbar-brand navbar-brand-desktop" href="/">
+                <images class="side-nav-show-on-closed" src="{% static 'images/logo-mini.png'}" alt="Graindashboard" style="width: auto; height: 33px;">
+                <images class="side-nav-hide-on-closed" src="{% static 'images/logo.png'%}" alt="Graindashboard" style="width: auto; height: 33px;">
+            </a>
+            <!-- End Logo For Desktop View -->
+        </div>
+
+        <div class="header-content col px-md-3">
+            <div class="d-flex align-items-center">
+                <!-- Side Nav Toggle -->
+                <a  class="js-side-nav header-invoker d-flex mr-md-2" href="#"
+                    data-close-invoker="#sidebarClose"
+                    data-target="#sidebar"
+                    data-target-wrapper="body">
+                    <i class="gd-align-left"></i>
+                </a>
+                <!-- End Side Nav Toggle -->
+
+                <!-- User Notifications -->
+             
+                <!-- End User Notifications -->
+                <!-- User Avatar -->
+                <div class="dropdown mx-3 dropdown ml-2">
+                   
+
+                    <ul id="profileMenu" class="unfold unfold-user unfold-light unfold-top unfold-centered position-absolute pt-2 pb-1 mt-4 unfold-css-animation unfold-hidden fadeOut" aria-labelledby="profileMenuInvoker" style="animation-duration: 300ms;">
+                        <li class="unfold-item">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                    <span class="unfold-item-icon mr-3">
+                      <i class="gd-user"></i>
+                    </span>
+                                My Profile
+                            </a>
+                        </li>
+                        <li class="unfold-item unfold-item-has-divider">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                    <span class="unfold-item-icon mr-3">
+                      <i class="gd-power-off"></i>
+                    </span>
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End User Avatar -->
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+<main class="main">
+    <!-- Sidebar Nav -->
+    <aside id="sidebar" class="js-custom-scroll side-nav">
+        <ul id="sideNav" class="side-nav-menu side-nav-menu-top-level mb-0">
+            <!-- Title -->
+            <li class="sidebar-heading h6">Dashboard</li>
+            <!-- End Title -->
+
+            <!-- Dashboard -->
+            <li class="side-nav-menu-item active">
+                <a class="side-nav-menu-link media align-items-center" href="/adminpanel">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-dashboard"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard -->
+
+            <!-- Documentation -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="demographic" target="_blank">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Documentation</span>
+                </a>
+            </li>
+            <!-- End Documentation -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="review" target="_blank">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Reviews</span>
+                </a>
+            </li>
+            <!-- Title -->
+            <li class="sidebar-heading h6">Data</li>
+            <!-- End Title -->
+
+            <!-- Users -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                   data-target="#subUsers">
+                  <span class="side-nav-menu-icon d-flex mr-3">
+                    <i class="gd-user"></i>
+                  </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Data View</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+              </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Users: subUsers -->
+                <ul id="subUsers" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="allusr">All Users</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="add_prd">Add new Products</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="allorder">Orders</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="month">Monthly Report</a>
+                    </li>
+                </ul>
+                <!-- End Users: subUsers -->
+            </li>
+
+
+        </ul>
+    </aside>
+    <!-- End Sidebar Nav -->
+
+    <div class="content">
+        <div class="py-4 px-3 px-md-4">
+            <div class="mb-3 mb-md-4 d-flex justify-content-between">
+                <div class="h3 mb-0">Monthly Report</div>
+            </div>
+            <button id="myBtn" class="btn btn-primary">Months</button>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="container">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="months" method="POST">
+            {% csrf_token %}
+              <br>
+              <br>
+              <div class="row">
+                  <div class="col text-center">
+
+                      <select class="form-select" aria-label="select month" name="month">
+                          <option value="1">January</option>
+                          <option value="2">February</option>
+                          <option value="3">March</option>
+                          <option value="4">April</option>
+                          <option value="5">May</option>
+                          <option value="6">June</option>
+                          <option value="7">July</option>
+                          <option value="8">August</option>
+                          <option value="9">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col text-center">
+    
+                      <button type="submit" class="btn btn-success mt-4 col-2">Find</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+         <div class="container">
+
+    
+            <div class="row">
+                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th class="th-sm">Username
+                        </th>
+                        <th class="th-sm">Brand
+                        </th>
+                        <th class="th-sm">Product
+                        </th>
+                        <th class="th-sm">Quantity
+                        </th>
+                        <th class="th-sm">Location
+                        </th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%for v in data %}
+                        <tr>
+                            <td>{{v.username}}</td>
+                            <td>{{v.brand}}</td>
+                            <td>{{v.product}}</td>
+                            <td>{{v.Quantity}}</td>
+                            <td>{{v.location}}</td>
+                            <input type="hidden" name="id" value="{{v.id}}">
+                          </tr>
+                       
+                          {%endfor%}
+                    </tbody>
+                  </table>
+                </div>
+
+
+            
+    
+
+        </div>
+    </div>
+
+        <!-- Footer -->
+        <footer class="small p-3 px-md-4 mt-auto">
+            <div class="row justify-content-between">
+                <div class="col-lg text-center text-lg-left mb-3 mb-lg-0">
+                    <ul class="list-dot list-inline mb-0">
+                        <li class="list-dot-item list-dot-item-not list-inline-item mr-lg-2"><a class="link-dark" href="#">FAQ</a></li>
+                        <li class="list-dot-item list-inline-item mr-lg-2"><a class="link-dark" href="#">Support</a></li>
+                        <li class="list-dot-item list-inline-item mr-lg-2"><a class="link-dark" href="#">Contact us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg text-center mb-3 mb-lg-0">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mx-2"><a class="link-muted" href="#"><i class="gd-twitter-alt"></i></a></li>
+                        <li class="list-inline-item mx-2"><a class="link-muted" href="#"><i class="gd-facebook"></i></a></li>
+                        <li class="list-inline-item mx-2"><a class="link-muted" href="#"><i class="gd-github"></i></a></li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </div>
+</main>
+
+
+<script src="{% static 'js/graindashboard.js'%}"></script>
+<script src="{% static 'js/graindashboard.vendor.js'%}"></script>
+<script>
+
+    var modal = document.getElementById("myModal");
+    
+    var btn = document.getElementById("myBtn");
+    
+    var span = document.getElementsByClassName("close")[0];
+    
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+
+
+
+<!-- DEMO CHARTS -->
+
+</body>
+</html>
