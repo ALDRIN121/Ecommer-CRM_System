@@ -1,3 +1,4 @@
+from home.views import review_save
 from django.shortcuts import render,redirect
 import numpy as np
 import pandas as pd
@@ -9,8 +10,9 @@ import urllib, base64
 from home.models import Add_info, Prdlist, Review, Transact
 import smtplib, ssl
 from django.contrib.auth.models import User
+from django.db.models import Count
 from django.db.models.functions import Extract
-
+from collections import Counter
 
 # Create your views here.
 
@@ -389,10 +391,6 @@ def allorder(request):
 
 def monthly(request):
 
-        
-        # data = np.loadtxt('~/Documents/Django/ecom/adminpanel/data.txt', delimiter=',', skiprows=1, dtype=str)
-        # print(data)
-
         return render(request,'monthly.html')
 
 def monthlys(request):
@@ -401,3 +399,15 @@ def monthlys(request):
         months = Transact.objects.annotate(month_stamp=Extract('date', 'month')).filter(month_stamp=month).all()
         print(months)
         return render(request,'monthly.html',{'data': months})
+
+def alerts(request):
+        d=Review.objects.filter(review_analysis="Negative").values("brand_pd","username")
+        s=d.annotate(mc=Count('brand_pd')).order_by('-mc')[0]
+        print(s)
+        d1=Review.objects.filter(review_analysis="Positive").values("brand_pd","username")
+        s1=d1.annotate(mc=Count('brand_pd')).order_by('-mc')[0]
+        return render(request,'alerts.html',{
+                'data': s,
+                'data1': s1
+                })
+        

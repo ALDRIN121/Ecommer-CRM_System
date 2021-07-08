@@ -16,6 +16,10 @@ urlpatterns = [
     path('allorder', views.allorder),
     path('month', views.monthly),
     path('months', views.monthlys),
+    path('alerts', views.alerts),
+
+    
+
 
 
 
