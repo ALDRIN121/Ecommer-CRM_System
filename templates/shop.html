@@ -73,8 +73,8 @@
     </header>
     <main>
         <!-- Hero Area Start-->
-        <div class="slider-area ">
-            <div class="single-slider slider-height2 d-flex align-items-center">
+        <!-- <div class="slider-area ">
+            <div class="single-slider slider-height2 d-flex align-items-center"> -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -82,14 +82,17 @@
                                 <h2>{{title}}</h2>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
             </div>
         </div>
         <!-- Hero Area End-->
         <!-- Latest Products Start -->
-        <section class="popular-items latest-padding">
-            <div class="container">
+        <br>
+        <br>
+        <br>
+        
+            <div class="container mt-4 mb-4">
                 
                 <!-- Nav Card -->
                 <div class="tab-content" id="nav-tabContent">
@@ -102,16 +105,15 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                                 <div class="single-popular-items mb-50 text-center">
                                     <div class="popular-img">
-                                        <img src="{{v.img.url}}" alt="" style="height: 220px; width: 300px;">
-                                        <div class="img-cap">
+                                        <img src="{{v.img.url}}" alt="" style="height: 280px; width: 300px;">
+                                        <br>
+                                        <div class="img-cap mt-4">
                                             <button class="btn" value="{{v.brand_pd}}" type="submit" name="btn1">Buy</button>
                                         </div>
-                                        <div class="favorit-items">
-                                            <span class="flaticon-heart"></span>
-                                        </div>
+                                        
                                     </div>
                                     <div class="popular-caption">
-                                        <h3><a href="product_details.html">{{v.brand_pd}}</a></h3>
+                                        <br>
                                         <span> ₹{{v.price}}</span>
                                     </div>
                                 </div>
@@ -124,7 +126,7 @@
                 </div>
                 <!-- End Nav Card -->
             </div>
-        </section>
+        
         <!-- Latest Products End -->
         <!--? Shop Method Start-->
         
@@ -132,14 +134,7 @@
     </main>
     
     <!--? Search model Begin -->
-    <div class="search-model-box">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-btn">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Searching key.....">
-            </form>
-        </div>
-    </div>
+   
     <!-- Search model end -->
 
 <!-- JS here -->
@@ -161,10 +156,6 @@
 <script src="{% static './assets/js/animated.headline.js' %}"></script>
 <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
 
-<!-- Scrollup, nice-select, sticky -->
-<script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
-<script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
-<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
 
 <!-- contact js -->
 <script src="{% static './assets/js/contact.js' %}"></script>

@@ -94,7 +94,6 @@
                                     <table class="table table-striped">
                                         <thead>
                                           <tr>
-                                            <th scope="col">No</th>
                                             <th scope="col">Product</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Unit Price</th>
@@ -112,7 +111,6 @@
                                         <tbody>
                                             {% for v in rev %}
                                           <tr>
-                                            <th scope="row">1</th>
                                             <td>{{v.brand_pd}}</td>
                                             <td>{{v.Quantity}}</td>
                                             <td>₹{{v.price}}</td>
@@ -145,45 +143,64 @@
                                 </form>
                                 <a href="/checkout"><button type="submit" class="btn btn-primary btn-block mb-4">Checkout</button></a>
                             </div>
+
                        
-                    </div>
-                    <!-- <div class="col-lg-5 offset-lg-1">
-                        <div class="s_product_text">
-                            <h3></h3>
-                            <h2>₹</h2>
-                            
-                            <p></p>
+                 
                             
                             
-                            <div class="add_to_cart">
-                                <form action="transact" method="POST">
-
-                                   
-
-
-                                    <div class="card_area">
-                                        <div class="product_count_area">
-                                            <p>Quantity</p>
-                                            <div class="product_count d-inline-block">
-                                                <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
-                                                <input class="product_count_item input-number"  name="qnt">
-                                                <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
-                                                
-                                            </div>
-                                            
-                                        </div>
-
-                                    <!-- <a href="#" class="btn_3">Buy</a> -->
-                                    <!-- <button class="btn_3" type="submit" name="btn1" value="{{v.brand_pd}}">Buy</button>
-                                </form> -->
-                            </div>
-                            </div>
-                            
-                            
-                        </div> -->
+                        </div> 
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container">
+            
+            
+            <div class="d-flex align-items-center ml-5">
+            <div class="row mt-4 col-4">
+                <br>
+                <br>
+                <br>
+                <h1>Previous Orders</h1>
+                <br>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                    
+                        <th scope="col">Total</th>
+                     
+
+                        
+                       
+
+
+
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for v in previous_order %}
+                      <tr>
+                        
+                        <td>{{v.brand_pd}}</td>
+                        <td>{{v.Quantity}}</td>
+                       
+                        <td>₹{{v.Total_Price}}</td>
+
+                        
+                      </tr>
+                      {%endfor%}
+
+                      
+                        
+                    </tbody>
+                  </table>
+            </div>
+        </div>
         </div>
         
         <!--================End Single Product Area =================-->

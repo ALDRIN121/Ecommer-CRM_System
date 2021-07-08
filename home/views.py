@@ -87,7 +87,7 @@ def product_detail(request):
     if request.method == 'POST':
         prd = request.POST['btn1']
     val = Prdlist.objects.filter(brand_pd=prd)
-    review = Review.objects.filter(brand_pd=prd).order_by('-id')[:3]
+    review = Review.objects.filter(brand_pd=prd).order_by('-id')[:5]
 
     return render(request,'product_details.html',{'val': val,'review':review})
 
@@ -267,12 +267,17 @@ def cart(request):
 
     uname = request.user.username
     rev = Cart.objects.filter(username=uname).filter(sold=False)
+    previous_order=Transact.objects.filter(username=uname).all()
     total_sum = Cart.objects.filter(username=uname).filter(sold=False).aggregate(Sum('Total_Price'))
     print(total_sum)
 
 
 
-    return render(request,'cart.html',{'rev':rev,'total':total_sum})
+    return render(request,'cart.html',{
+        'rev':rev,
+        'total':total_sum,
+        'previous_order':previous_order
+        })
 
 def cart_checkout(request):
 

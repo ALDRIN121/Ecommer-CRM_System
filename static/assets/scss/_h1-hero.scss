@@ -5,7 +5,7 @@
     background-position: center center;
     background-size: cover;
     @media #{$laptop}{
-        min-height: 750px;
+        min-height: 550px;
     }
     @media #{$lg}{
         min-height: 500px;
@@ -24,7 +24,7 @@
 // Another Hero Page
 .slider-height2{
     background-image: url(../img/hero/about_hero.png);
-    min-height: 500px;
+    min-height: 300px;
     background-repeat:no-repeat ;
     background-position: center center;
     @media #{$xs}{
