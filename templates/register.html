@@ -25,9 +25,12 @@
 </head>
 <body>
     {% if messages %}
+        
     {% for message in messages %}
-     {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
-
+    
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
     {% endfor %}
 
 {% endif %}

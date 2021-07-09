@@ -4,7 +4,7 @@ from django.utils import timezone
 class Prdlist(models.Model):
     product= models.CharField(max_length=100)
     brand= models.CharField(max_length=100)
-    brand_pd= models.CharField(max_length=100)
+    brand_pd= models.CharField(max_length=100,unique=True)
     pd_details= models.CharField(max_length=500)
     price= models.CharField(max_length=100)
     img = models.ImageField(upload_to='pics')

@@ -26,7 +26,16 @@
 <body>
     <header>
         <!-- Header Start -->
+        {% if messages %}
         
+        {% for message in messages %}
+        
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+    
+    {% endif %}
         <!-- Header End -->
     </header>
     <main>

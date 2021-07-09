@@ -1,4 +1,4 @@
-from home.views import review_save
+from django.contrib import messages
 from django.shortcuts import render,redirect
 import numpy as np
 import pandas as pd
@@ -359,27 +359,39 @@ def add_prd(request):
         return render(request,'add_prd.html')
 
 def addpd(request):
+        try:
 
-        if request.method == 'POST':
-                prdcat = request.POST['prdcat']
-                brnd = request.POST['brnd']
-                prdname = request.POST['prdname']
-                prddetails = request.POST['prddetails']
-                prdprice = request.POST['prdprice']
-                prdimg = request.FILES['prdimage']
 
-                prd = Prdlist(
-                        product = prdcat,
-                        brand=brnd,
-                        brand_pd=prdname,
-                        pd_details=prddetails,
-                        price=prdprice,
-                        img=prdimg
-                )
+                if request.method == 'POST':
+                        prdcat = request.POST['prdcat']
+                        brnd = request.POST['brnd']
+                        prdname = request.POST['prdname']
+                        prddetails = request.POST['prddetails']
+                        prdprice = request.POST['prdprice']
+                        stock = request.POST['stock']
 
-                prd.save()
+                        prdimg = request.FILES['prdimage']
 
-                return redirect('/adminpanel')
+                        prd = Prdlist(
+                                product = prdcat,
+                                brand=brnd,
+                                brand_pd=prdname,
+                                pd_details=prddetails,
+                                price=prdprice,
+                                img=prdimg,
+                                stock=stock
+                        )
+
+                        prd.save()
+
+                        return redirect('/adminpanel')
+
+        except Exception as e:
+                messages.info(request, "Product Already Exists")
+
+                return redirect('/adminpanel/add_prd')
+                
+
 
 
 def allusr(request):

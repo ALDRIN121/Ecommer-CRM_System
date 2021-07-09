@@ -1,3 +1,4 @@
+from adminpanel.views import stocks
 from django.contrib.messages.api import add_message
 from django.shortcuts import render,redirect
 from .models import Prdlist,Add_info,Transact,Review,Cart
@@ -6,6 +7,8 @@ from django.contrib import messages
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from django.db.models import Sum
 from django.contrib.auth import logout
+from django.db.models import F
+
 
 # Create your views here.
 
@@ -36,10 +39,10 @@ from django.contrib.auth import logout
 
 def mainpg(request):
 
-    mobile = Prdlist.objects.filter(product='mobile').last()
-    laptop = Prdlist.objects.filter(product='Laptop').last()
-    tv = Prdlist.objects.filter(product='TV').last()
-    speaker = Prdlist.objects.filter(product='Speaker').last()
+    mobile = Prdlist.objects.filter(product='mobile').filter(stock__gt=0).last()
+    laptop = Prdlist.objects.filter(product='Laptop').filter(stock__gt=0).last()
+    tv = Prdlist.objects.filter(product='TV').filter(stock__gt=0).last()
+    speaker = Prdlist.objects.filter(product='Speaker').filter(stock__gt=0).last()
 
     uname = request.user.username
 
@@ -61,23 +64,23 @@ def mainpg(request):
 
 
 def mobile(request):
-    mobile = Prdlist.objects.filter(product='mobile')
+    mobile = Prdlist.objects.filter(product='mobile').filter(stock__gt=0)
 
     return render(request,'shop.html',{'val': mobile,'title': 'Mobile'})
 
 def laptop(request):
-    val = Prdlist.objects.filter(product='Laptop')
+    val = Prdlist.objects.filter(product='Laptop').filter(stock__gt=0)
 
     return render(request,'shop.html',{'val': val,'title': 'Laptop'})
 
 def tv(request):
-    val = Prdlist.objects.filter(product='TV')
+    val = Prdlist.objects.filter(product='TV').filter(stock__gt=0)
 
     return render(request,'shop.html',{'val': val,'title': 'TV'})
 
 
 def speaker(request):
-    val = Prdlist.objects.filter(product='Speaker')
+    val = Prdlist.objects.filter(product='Speaker').filter(stock__gt=0)
 
     return render(request,'shop.html',{'val': val,'title': 'Speaker'})
 
@@ -111,7 +114,7 @@ def register(request):
         location = request.POST['location']
 
         if User.objects.filter(username = uname).first():
-            messages.error(request, "This username is already taken")
+            messages.info(request, "This username is already taken")
             return redirect("/signup")
         else:
             user = User.objects.create_user(username = uname, password = pswd1, email = email, first_name=fname,last_name=lname)
@@ -174,8 +177,10 @@ def transact(request):
                 Quantity=qnt,
                 Total_Price= str(Total)
             )
-
+# update the value for the stock 
             transt.save()
+            Prdlist.objects.filter(brand_pd=pdname).update(stock=F('stock')- qnt)
+
             return redirect("/home")
 
         elif 'btn2' in request.POST:
@@ -195,6 +200,7 @@ def transact(request):
                 price=price
                 
             )
+            
             add_to_cart.save()
             return redirect("/home")
 
@@ -323,6 +329,9 @@ def checkout(request):
         )
         transt.save()
         Cart.objects.filter(username=uname).update(sold=True)
+    # update the stock value
+        Prdlist.objects.filter(brand_pd=c.brand_pd).update(stock=F('stock')- c.Quantity)
+
 
     return redirect('/home')
 
@@ -361,6 +370,3 @@ def update_cart(request):
 def logout_user(request):
     logout(request)
     return redirect("/")
-
-
-        
