@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.db.models.functions import Extract
 from collections import Counter
+from django.db.models import F
 
 # Create your views here.
 
@@ -410,4 +411,15 @@ def alerts(request):
                 'data': s,
                 'data1': s1
                 })
+def stocks(request):
+        data = Prdlist.objects.all()
+        return render(request,'stocks.html',{'data':data})
+        
+def add_stocks(request):
+        if request.method == 'POST':
+                v_id= request.POST['id']
+                stoc = request.POST['stocks']
+                Prdlist.objects.filter(id=v_id).update(stock=F('stock')+ stoc)
+                print("hello")
+        return redirect('/adminpanel/stocks')
         

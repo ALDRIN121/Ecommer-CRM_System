@@ -354,7 +354,6 @@ def update_cart(request):
     if request.method == 'POST':
         v_id = request.POST['btn']
     rev = Cart.objects.filter(username=uname).filter(sold=False).filter(id=v_id)
-
     print(v_id)
     return render(request,'edit_cart.html',{'rev':rev})
 

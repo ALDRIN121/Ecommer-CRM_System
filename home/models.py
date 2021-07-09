@@ -8,6 +8,7 @@ class Prdlist(models.Model):
     pd_details= models.CharField(max_length=500)
     price= models.CharField(max_length=100)
     img = models.ImageField(upload_to='pics')
+    stock = models.IntegerField(max_length=500)
 
 
 class Add_info(models.Model):
