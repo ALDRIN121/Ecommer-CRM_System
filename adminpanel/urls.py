@@ -19,25 +19,5 @@ urlpatterns = [
     path('alerts', views.alerts),
     path('stocks', views.stocks),
     path('add_stocks', views.add_stocks),
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    path('view_stocks', views.view_stock),
 ]

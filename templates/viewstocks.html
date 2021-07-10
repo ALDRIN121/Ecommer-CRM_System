@@ -52,7 +52,7 @@
                 <!-- End Side Nav Toggle -->
 
                 <!-- User Notifications -->
-             
+              
                 <!-- End User Notifications -->
                 <!-- User Avatar -->
                 <div class="dropdown mx-3 dropdown ml-2">
@@ -192,10 +192,10 @@
         <div class="py-4 px-3 px-md-4">
 
             <div class="mb-3 mb-md-4 d-flex justify-content-between">
-                <div class="h3 mb-0">REVIEWS</div>
+                <div class="h3 mb-0">STOCKS</div>
             </div>
 
-            <form method="POST" action="reviewmsg">
+            <form method="POST" action="">
                 {% csrf_token %}
             <div class="row">
 
@@ -203,39 +203,33 @@
                 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                       <tr>
-                        <th class="th-sm">Username
+                        <th class="th-sm">Product Category 
                         </th>
-                        <th class="th-sm">Review
+                        <th class="th-sm">Brand
                         </th>
-                        <th class="th-sm">Product
+                        <th class="th-sm">Product Name
                         </th>
-                        <th class="th-sm">Analysis
+                        <th class="th-sm">Price
                         </th>
-                        <th class="th-sm">Contact
+                        <th class="th-sm">Stock
                         </th>
                         
                       </tr>
                     </thead>
                     <tbody>
-                        {%for v in review %}
+                        {%for v in data %}
                         <tr>
-                            <td>{{v.username}}</td>
-                            <td>{{v.review}}</td>
+                            <td>{{v.product}}</td>
+                            <td>{{v.brand}}</td>
                             <td>{{v.brand_pd}}</td>
-                            <td>{{v.review_analysis}}</td>
-                            <td><button type="submit" class="btn btn-primary" value="{{v.username}}" name="btn1">Contact</button></td>
-                            <input type="hidden" name="id" value="{{v.id}}">
+                            <td>{{v.price}}</td>
+                            <td>{{v.stock}}</td>
                           </tr>
                           {%endfor%}
                     </tbody>
-                    
                   </table>
                 </div>
             </form>
-
-            
-
-
         </div>
 
         <!-- Footer -->

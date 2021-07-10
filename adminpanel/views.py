@@ -435,3 +435,6 @@ def add_stocks(request):
                 print("hello")
         return redirect('/adminpanel/stocks')
         
+def view_stock(request):
+        data = Prdlist.objects.all()
+        return render(request,'viewstocks.html',{'data':data})
