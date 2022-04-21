@@ -26,7 +26,7 @@ from django.db.models import F
 def mainpg(request):
     
     a4_dims = (5.0, 5.0)
-    df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+    df = pd.read_csv('file1.csv')
     fig,ax = plt.subplots(figsize=a4_dims)
     labels = 'male','female'
     explode = (0, 0.05)
@@ -85,7 +85,7 @@ def mainpg(request):
 
 def countplt():
     a4_dims = (7.0, 5.0)
-    df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+    df = pd.read_csv('file1.csv')
     fig,ax = plt.subplots(figsize=a4_dims)
     sns.countplot(x="location", data=df)
     #convert graph into dtring buffer and then we convert 64 bit code into image
@@ -100,7 +100,7 @@ def countplt():
     
 def ageplt():
     a4_dims = (7.0, 5.0)
-    df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+    df = pd.read_csv('file1.csv')
     fig,ax = plt.subplots()
     df.groupby('sex').age.plot(kind='kde')
     #convert graph into dtring buffer and then we convert 64 bit code into image
@@ -149,7 +149,7 @@ def sent_email(request):
 
 
         prompt_msg = msg
-        file = open("/home/aldrin/Documents/Django/ecom/adminpanel/datas.txt")
+        file = open("datas.txt")
         data = file.readlines()
         print(data[1])
 
@@ -180,7 +180,7 @@ def demographic(request):
         return render(request,"documets.html")
 
 def loc_prd(request):
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
 
         if request.method == 'POST':
                 loc = request.POST['btn']
@@ -216,7 +216,7 @@ def loc_prd(request):
 
 def loc_ageplt(x):
     a4_dims = (5.0, 3.0)
-    df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+    df = pd.read_csv('file1.csv')
     fig,ax = plt.subplots()
     df[df['location']==x].age.plot(kind='kde')
     #convert graph into dtring buffer and then we convert 64 bit code into image
@@ -232,7 +232,7 @@ def loc_ageplt(x):
 def loc_countplt(x):
 
         a4_dims = (5.0, 3.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         sns.countplot(x=df.products[df.location ==x],data=df)
         #convert graph into dtring buffer and then we convert 64 bit code into image
@@ -249,7 +249,7 @@ def loc_countplt(x):
 def loc_lineplt(x):
 
         a4_dims = (7.0, 5.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         p=df.products[df.location ==x]
         a=df.age[df.location ==x]
@@ -267,7 +267,7 @@ def mobile_pie(x):
 
 
         a4_dims = (5.0, 5.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         labels = "samsung","oppo","xiomi","apple"
         explode = (0.03, 0.03,0.03,0.03)
@@ -289,7 +289,7 @@ def lap_pie(x):
 
 
         a4_dims = (5.0, 5.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         labels = "asus","hp","dell","lenovo"
         explode = (0.03, 0.03,0.03,0.03)
@@ -310,7 +310,7 @@ def speaker_pie(x):
 
 
         a4_dims = (5.0, 5.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         names = ["jbl","sony","bose","harman"]
         labels = list(names)
@@ -331,7 +331,7 @@ def tv_pie(x):
 
 
         a4_dims = (5.0, 5.0)
-        df = pd.read_csv('~/Documents/Django/ecom/file1.csv')
+        df = pd.read_csv('/file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         labels = "LG","VU","sony","Toshiba"
         explode = (0.03, 0.03,0.03,0.03)
