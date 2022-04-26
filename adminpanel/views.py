@@ -149,7 +149,7 @@ def sent_email(request):
 
 
         prompt_msg = msg
-        file = open("datas.txt")
+        file = open("C:/Users/Aldrin/Documents/Django/ecom/adminpanel/datas.txt")
         data = file.readlines()
         print(data[1])
 
@@ -331,7 +331,7 @@ def tv_pie(x):
 
 
         a4_dims = (5.0, 5.0)
-        df = pd.read_csv('/file1.csv')
+        df = pd.read_csv('file1.csv')
         fig,ax = plt.subplots(figsize=a4_dims)
         labels = "LG","VU","sony","Toshiba"
         explode = (0.03, 0.03,0.03,0.03)

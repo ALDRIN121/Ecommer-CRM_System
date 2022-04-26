@@ -44,46 +44,46 @@
         
         <!-- Hero Area End-->
         <!--================login_part Area =================-->
-        <section class="login_part section_padding ">
-            <div class="container">
+        <section class="login_part row align-items-center">
+            <div class="container row-3">
                 <div class="row align-items-center">
                    
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col">
                         <div class="login_part_form">
                             <div class="login_part_form_iner">
                                 <h3>Hello ! <br>
                                    Please enter your details </h3>
                                 <form class="row contact_form" action="register" method="post">
                                     {% csrf_token %}
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="text" class="form-control" id="name" name="fname" value=""
                                             placeholder="firstname">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="text" class="form-control" id="password" name="lname" value=""
                                             placeholder="last name">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="text" class="form-control"  name="uname" value=""
                                             placeholder="Username">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="email" class="form-control" name="email" value=""
                                             placeholder="email" id="exampleFormControlInput1">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="password" class="form-control" name="pass" value=""
                                             placeholder="password">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                       <div class="row">
-                                        <select class="custom-select" id="inputGroupSelect01" name="gender">
+                                        <select class="custom-select col-md-6" id="inputGroupSelect01" name="gender">
                                             <option selected>Gender</option>
                                             <option value="male">Male</option>
                                             <option value="femail">Femail</option>
                                           </select>
 
-                                          <select class="custom-select" id="inputGroupSelect01" name="location">
+                                          <select class="custom-select col-md-6" id="inputGroupSelect01" name="location">
                                             <option selected>Location</option>
                                             <option value="kochi">kochi</option>
                                             <option value="kannur">kannur</option>
@@ -95,16 +95,16 @@
                                           </select>
                                       </div>
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                         <input type="text" class="form-control" name="age" value=""
                                             placeholder="age">
                                     </div>
-                                    <div class="col-md-12 form-group p_star">
+                                    <div class="col-md-6 form-group p_star">
                                        
                                     </div>
-                                    <div class="col-md-12 form-group">
+                                    <div class="col form-group">
                                         
-                                        <button type="submit" value="submit" class="btn_3">
+                                        <button type="submit btn-lg" value="submit" class="btn_3">
                                             Register
                                         </button>
                                         
